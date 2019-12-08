@@ -22,11 +22,11 @@ class Tracker:
         self.prev_state = state
 
         self.focus_pred_stddev = 16
-        self.focus_pred_weight = 0.2
-        self.reg_pred_stddev = 256
-        self.learning_rate = 0.03
-        self.process_noise = 5e-5
-        self.negative_kernel_weight = 0.4
+        self.focus_pred_weight = 0.3
+        self.reg_pred_stddev = 200
+        self.learning_rate = 0.02
+        self.process_noise = 5e-3
+        self.negative_kernel_weight = 1
 
         self.kalman = cv.KalmanFilter(4, 4)
         self.kalman.transitionMatrix = numpy.array([
@@ -176,14 +176,14 @@ if __name__ == "__main__":
     ddepth = -1
 
     while True:
-        #reader = VideoReader("media/Bird1/bird.mp4")
-        #start_pos = [400,90,50,50]
-        #reader = VideoReader("media/Football/football.mp4")
-        #start_pos = [310,102,39,50]
         #reader = VideoReader("media/ball.mp4")
         #start_pos = [0, 0, 40, 40]
-        reader = VideoReader("media/RedTeam/redteam.mp4")
-        start_pos = [197, 95, 38, 18]
+        #reader = VideoReader("media/Football/football.mp4")
+        #start_pos = [310,102,39,50]
+        #reader = VideoReader("media/RedTeam/redteam.mp4")
+        #start_pos = [197, 95, 38, 18]
+        #reader = VideoReader("media/CarScale/car.mp4")
+        #start_pos = [29, 170, 22, 16]
         first_frame = True
         for frame in reader.getframes():
             if first_frame:
